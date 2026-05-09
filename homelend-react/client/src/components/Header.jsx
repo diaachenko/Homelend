@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.svg';
+import logo from '../images/logo.svg';
 
 export default function Header({ user, onLogout }) {
   const [isScrolled, setIsScrolled] = useState(false);
