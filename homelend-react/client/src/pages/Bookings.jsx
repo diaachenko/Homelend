@@ -2,7 +2,6 @@ import SuiteCard from '../components/SuiteCard';
 import '../styles/bookings_style.css';
 
 export default function Bookings({ suites, bookedSuites, toggleBooking, user }) {
-  // Відбираємо лише ті кімнати, які є у стані bookedSuites
   const userBookings = suites.filter(suite => bookedSuites[suite.id]);
 
   return (
