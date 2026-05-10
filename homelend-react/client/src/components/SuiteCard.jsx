@@ -51,7 +51,7 @@ export default function SuiteCard({ suite, user }) {
             <h4>Reviews:</h4>
             {reviews.map(r => (
               <p key={r.id} style={{fontSize:'12px', borderBottom:'1px solid #ddd'}}>
-                <strong>{r.user.email}:</strong> {r.text}
+                <strong>{rev.user?.email ? rev.user.email.split('@')[0] : (rev.email || 'User')}:</strong> {rev.text}
               </p>
             ))}
             

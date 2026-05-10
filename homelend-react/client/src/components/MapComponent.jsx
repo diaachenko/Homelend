@@ -4,7 +4,6 @@ import L from 'leaflet';
 
 export default function MapComponent({ suites, bookedSuites, toggleBooking }) {
   return (
-    // ДОДАНО style={{ height: '600px', ... }} - це гарантує, що мапа з'явиться!
     <MapContainer 
       center={[49.841, 24.031]} 
       zoom={12} 
@@ -29,6 +28,20 @@ export default function MapComponent({ suites, bookedSuites, toggleBooking }) {
               <div className="map-popup-card">
                 <img src={suite.image} alt={suite.title} style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '8px' }} />
                 <h3 style={{margin: '5px 0', fontSize: '16px', color: '#061B38'}}>{suite.title}</h3>
+                <div style={{ marginTop: '10px' }}>
+                    <h4 style={{ margin: '0 0 5px 0', fontSize: '14px' }}>Reviews:</h4>
+                    {(suite.reviews || []).length > 0 ? (
+                        <ul style={{ paddingLeft: '15px', margin: '0', fontSize: '13px' }}>
+                            {(suite.reviews || []).map((rev, i) => (
+                                <li key={i}>
+                                  <strong>{rev.user?.email ? rev.user.email.split('@')[0] : 'User'}:</strong> {rev.text}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p style={{ fontSize: '13px', margin: '0' }}>No reviews yet.</p>
+                    )}
+                </div>
                 <button 
                   className={`book-btn ${isBooked ? 'is-booked' : ''}`} 
                   disabled={isBooked}
