@@ -9,12 +9,21 @@ export default function Search({ suites, bookedSuites, toggleBooking, user }) {
   const [sortOrder, setSortOrder] = useState('none');
   const [maxPrice, setMaxPrice] = useState(500);
 
-  const getPriceNum = (str) => parseInt(str.replace(/\D/g, '')) || 0;
+  const getPriceNum = (str) => {
+    if (!str) return 0;
+    return parseInt(String(str).replace(/\D/g, '')) || 0;
+  };
 
   let processedSuites = suites.filter(suite => {
-    const matchesSearch = suite.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          (suite.description && suite.description.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesPrice = getPriceNum(suite.price) <= maxPrice;
+    const safeTitle = suite.title || '';
+    const safeDesc = suite.description || '';
+    const searchLower = searchQuery.toLowerCase();
+
+    const matchesSearch = safeTitle.toLowerCase().includes(searchLower) || 
+                          safeDesc.toLowerCase().includes(searchLower);
+    
+    const matchesPrice = user ? (getPriceNum(suite.price) <= maxPrice) : true;
+    
     return matchesSearch && matchesPrice;
   });
 

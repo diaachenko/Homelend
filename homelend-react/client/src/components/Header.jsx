@@ -63,7 +63,7 @@ export default function Header({ user, onLogout }) {
                 onClick={onLogout} 
                 style={{padding: '8px 15px', background: '#061B38', color: 'white'}}
               >
-                Logout ({user.email.split('@')[0]})
+                Logout ({user && user.email ? user.email.split('@')[0] : 'User'})
               </button>
             </li>
           ) : (
