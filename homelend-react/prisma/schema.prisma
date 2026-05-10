@@ -16,8 +16,8 @@ model User {
   id         Int         @id @default(autoincrement())
   email      String      @unique
   password   String
-  apartments Apartment[] // Квартири, які додав користувач
-  reviews    Review[]    // Відгуки користувача
+  apartments Apartment[]
+  reviews    Review[]
 }
 
 model Apartment {
