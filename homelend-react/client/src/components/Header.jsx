@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../images/logo.svg';
 
 export default function Header({ user, onLogout }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +32,7 @@ export default function Header({ user, onLogout }) {
     <header className={isScrolled ? 'scrolled' : ''}>
       <div className="logo">
         <a href="/" onClick={(e) => handleNav(e, '/')}>
-          <img src={logo} alt="Logo" className="logo-img" />
+          <img src="/images/logo.svg" alt="Logo" className="logo-img" />
         </a>
       </div>
       

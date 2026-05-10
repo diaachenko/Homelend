@@ -40,4 +40,3 @@ export default function AddApartment({ user }) {
       </form>
     </main>
   );
-}
