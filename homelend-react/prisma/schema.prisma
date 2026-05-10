@@ -27,6 +27,8 @@ model Apartment {
   address     String
   description String
   image       String
+  lat         Float
+  lng         Float
   ownerId     Int
   owner       User     @relation(fields: [ownerId], references: [id])
   reviews     Review[]
