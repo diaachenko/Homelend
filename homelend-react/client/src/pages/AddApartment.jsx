@@ -9,7 +9,8 @@ export default function AddApartment({ user }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
+    const token = localStorage.
+    getItem('token');
     
     const res = await fetch('/api/apartments', {
       method: 'POST',
@@ -40,3 +41,4 @@ export default function AddApartment({ user }) {
       </form>
     </main>
   );
+}
